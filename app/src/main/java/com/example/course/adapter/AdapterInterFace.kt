@@ -13,13 +13,14 @@ import com.example.course.R
 class AdapterInterFace (val context:Context):PagerAdapter(){
     val arrayImage :IntArray = intArrayOf(R.drawable.youtube,R.drawable.instagram,R.drawable.facebook_logo_489)
     val titleView = arrayOf("Youtube","Instagram","Facebook")
+
     override fun getCount(): Int {
 return arrayImage.size
 
     }
 
     override fun isViewFromObject(view: View, `object`: Any): Boolean {
-        TODO("Not yet implemented")
+
         return view == `object`
 
     }
@@ -32,7 +33,8 @@ return arrayImage.size
 
         title.text = titleView[position]
         img.setImageDrawable(ContextCompat.getDrawable(context,arrayImage[position]))
-      return  view
+        container.addView(view)
+      return view
     }
 
     override fun destroyItem(container: ViewGroup, position: Int, `object`: Any) {

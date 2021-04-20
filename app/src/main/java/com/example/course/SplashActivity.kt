@@ -10,7 +10,7 @@ class SplashActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_splash)
         Handler().postDelayed({
-            val intent = Intent(this,ViewPager::class.java)
+            val intent = Intent(this,PagerViewActivity::class.java)
             startActivity(intent)
         },3000) //set time out
     }
