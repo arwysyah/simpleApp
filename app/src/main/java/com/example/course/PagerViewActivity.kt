@@ -17,42 +17,47 @@ class PagerViewActivity : AppCompatActivity()  {
         setContentView(R.layout.activity_pager_view)
         vdAdapter = AdapterInterFace(this)
         vv_pager.adapter = vdAdapter
-//        slideIndicator(currentPage)
-//        initFunction()
+        slideIndicator(currentPage)
+        initFunction()
+
+
     }
 
-//    fun initFunction (){
-//        vv_pager.addOnPageChangeListener(object : ViewPager.OnPageChangeListener{
-//            override fun onPageScrolled(
-//                position: Int,
-//                positionOffset: Float,
-//                positionOffsetPixels: Int
-//            ) {
-//                TODO("Not yet implemented")
-//            }
-//
-//            override fun onPageSelected(position: Int) {
-//               slideIndicator((position))
-//                currentPage = position
-//            }
-//
-//            override fun onPageScrollStateChanged(state: Int) {
-//                TODO("Not yet implemented")
-//            }
-//
-//        })
-//    }
-//    fun slideIndicator (param :Int){
-//        ll_02.removeAllViews()
-//        for (i in 0..dots.size-1){
-//            dots[i]= TextView(this)
-//            dots[i]?.textSize= 35f
-//            dots[i]?.setTextColor(resources.getColor(R.color.design_default_color_error))
-//
-//        }
-//        if(dots.size>0){
-//            dots[param]?.setTextColor(resources.getColor(R.color.design_default_color_primary))
-//        }
-//    }
+
+    fun initFunction (){
+        vv_pager.addOnPageChangeListener(object : ViewPager.OnPageChangeListener{
+            override fun onPageScrolled(
+                position: Int,
+                positionOffset: Float,
+                positionOffsetPixels: Int
+            ) {
+
+            }
+
+            override fun onPageSelected(position: Int) {
+               slideIndicator(position)
+                currentPage = position
+            }
+
+            override fun onPageScrollStateChanged(state: Int) {
+
+            }
+
+        })
+        tv_next.setOnClickListener { vv_pager.setCurrentItem(currentPage+1) }
+        tv_skip.setOnClickListener { vv_pager.setCurrentItem(currentPage-1) }
+    }
+    fun slideIndicator (param :Int){
+        ll_02.removeAllViews()
+        for (i in 0..dots.size-1){
+            dots[i]= TextView(this)
+            dots[i]?.textSize= 35f
+            dots[i]?.setTextColor(resources.getColor(R.color.design_default_color_error))
+
+        }
+        if(dots.size>0){
+            dots[param]?.setTextColor(resources.getColor(R.color.design_default_color_primary))
+        }
+    }
 
 }
